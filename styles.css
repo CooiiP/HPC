@@ -45,6 +45,26 @@ select, input {
     font-size: 16px;
 }
 
+/* 针对 iOS 设备的样式 */
+input[type="date"] {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+select {
+    -webkit-appearance: none;  /* iOS */
+    -moz-appearance: none;     /* Firefox */
+    appearance: none;          /* Standard */
+    background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 10 6"><path d="M5 6l5-5H0z"/></svg>') no-repeat right #fff;
+    background-size: 10px;
+    padding-right: 20px; /* 给右边留出空间显示自定义的下拉箭头 */
+}
+
 .btn {
     background: #28a745;
     color: white;
@@ -90,5 +110,5 @@ select, input {
 .remark-message {
     margin-top: 20px;
     font-size: 14px;
-    color: #666;
+    color: #000000;
 }
