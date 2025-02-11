@@ -60,9 +60,7 @@ select {
     -webkit-appearance: none;  /* iOS */
     -moz-appearance: none;     /* Firefox */
     appearance: none;          /* Standard */
-    background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 10 6"><path d="M5 6l5-5H0z"/></svg>') no-repeat right #fff;
-    background-size: 10px;
-    padding-right: 20px; /* 给右边留出空间显示自定义的下拉箭头 */
+    
 }
 
 .btn {
@@ -112,3 +110,4 @@ select {
     font-size: 14px;
     color: #000000;
 }
+
