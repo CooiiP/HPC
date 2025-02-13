@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="zh">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
@@ -8,44 +9,44 @@
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
 </head>
+
 <body>
+    <div class="container">
+        <h2>酒店价格计算器</h2>
 
-<div class="container">
-    <h2>酒店价格计算器</h2>
+        <div class="form-group">
+            <label for="country">国家</label>
+            <select id="country"></select>
+        </div>
 
-    <div class="form-group">
-        <label for="country">国家</label>
-        <select id="country"></select>
+        <div class="form-group">
+            <label for="location">地区</label>
+            <select id="location"></select>
+        </div>
+
+        <div class="form-group">
+            <label for="hotel_name">酒店</label>
+            <select id="hotel_name"></select>
+        </div>
+
+        <div class="form-group">
+            <label for="checkin_date">入住日期</label>
+            <input type="date" id="checkin_date">
+        </div>
+
+        <div class="form-group">
+            <label for="checkout_date">离店日期</label>
+            <input type="date" id="checkout_date">
+        </div>
+
+        <button id="calculate" class="btn">计算价格</button>
+
+        <p id="error_message" class="error-message"></p>
+
+        <div id="price_table" class="price-table"></div>
+
+        <div id="remark_message" class="remark-message"></div>
     </div>
-
-    <div class="form-group">
-        <label for="location">地区</label>
-        <select id="location"></select>
-    </div>
-
-    <div class="form-group">
-        <label for="hotel_name">酒店</label>
-        <select id="hotel_name"></select>
-    </div>
-
-    <div class="form-group">
-        <label for="checkin_date">入住日期</label>
-        <input type="date" id="checkin_date">
-    </div>
-
-    <div class="form-group">
-        <label for="checkout_date">离店日期</label>
-        <input type="date" id="checkout_date">
-    </div>
-
-    <button id="calculate" class="btn">计算价格</button>
-
-    <p id="error_message" class="error-message"></p>
-
-    <div id="price_table" class="price-table"></div>
-
-    <div id="remark_message" class="remark-message"></div>
-</div>
-
 </body>
+
 </html>
