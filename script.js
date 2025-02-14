@@ -83,7 +83,7 @@
         fetch(`https://cooiip.github.io/HPC/assets/${country}.json`)
             .then(response => response.json())
             .then(data => {
-                const selectedHotelData = data.filter(item => item.Country === country && item.Location === location && item.Hotel_Name === hotelName);
+                const selectedHotelData = data.filter(item => item.Location === location && item.Hotel_Name === hotelName);
                 const priceSummary = calculateTotalPrice(selectedHotelData, checkin, checkout, days);
                 displayPriceTable(priceSummary);
             })
