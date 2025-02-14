@@ -1,5 +1,4 @@
-
-  document.addEventListener('DOMContentLoaded', function () {
+document.addEventListener('DOMContentLoaded', function () {
     const countrySelect = document.getElementById('country');
     const locationSelect = document.getElementById('location');
     const hotelSelect = document.getElementById('hotel_name');
@@ -18,7 +17,7 @@
             .then(response => response.json())
             .then(data => {
                 updateLocationOptions(data);
-                updateHotelOptions(data);
+                updateHotelOptions(data); // 默认地区选择后刷新酒店
             })
             .catch(err => {
                 console.error("加载数据失败:", err);
@@ -37,10 +36,16 @@
             fragment.appendChild(option);
         });
         locationSelect.appendChild(fragment);
+
+        // 默认选择第一个地区并刷新酒店选择
+        if (locations.length > 0) {
+            locationSelect.value = locations[0];
+            updateHotelOptions(data, locations[0]);
+        }
     }
 
-    function updateHotelOptions(data) {
-        const hotels = [...new Set(data.map(item => item.Hotel_Name))];
+    function updateHotelOptions(data, location = locationSelect.value) {
+        const hotels = [...new Set(data.filter(item => item.Location === location).map(item => item.Hotel_Name))];
         hotelSelect.innerHTML = '';  // 清空现有选项
         const fragment = document.createDocumentFragment();
         hotels.forEach(function(hotel) {
@@ -51,6 +56,20 @@
         });
         hotelSelect.appendChild(fragment);
     }
+
+    // 监听地区选择变化并刷新酒店
+    locationSelect.addEventListener('change', function () {
+        const selectedLocation = this.value;
+        fetch(`https://cooiip.github.io/HPC/assets/${countrySelect.value}.json`)
+            .then(response => response.json())
+            .then(data => {
+                updateHotelOptions(data, selectedLocation); // 根据选定地区刷新酒店
+            })
+            .catch(err => {
+                console.error("加载数据失败:", err);
+                alert("无法加载数据，请稍后再试。");
+            });
+    });
 
     // 计算总价
     document.getElementById('calculate').addEventListener('click', function () {
@@ -83,6 +102,7 @@
         fetch(`https://cooiip.github.io/HPC/assets/${country}.json`)
             .then(response => response.json())
             .then(data => {
+                // 根据选择的地区和酒店筛选数据
                 const selectedHotelData = data.filter(item => item.Location === location && item.Hotel_Name === hotelName);
                 const priceSummary = calculateTotalPrice(selectedHotelData, checkin, checkout, days);
                 displayPriceTable(priceSummary);
@@ -100,6 +120,7 @@
         hotelData.forEach(function(item) {
             const roomType = item.Room_Type;
 
+            // 检查房型是否已存在，如果已存在，则跳过
             if (priceSummary.some(function(entry) { return entry.Room_Type === roomType; })) return;
 
             let totalPrice = 0;
@@ -107,17 +128,19 @@
             for (let i = 0; i < days; i++) {
                 const currentDate = new Date(checkin);
                 currentDate.setDate(currentDate.getDate() + i);
-                const currentDateString = currentDate.toISOString().split('T')[0];
+                const currentDateString = currentDate.toISOString().split('T')[0]; // 获取YYYY-MM-DD格式的日期字符串
 
+                // 找到该日期的房价数据
                 const dayData = hotelData.find(function(d) { return d.Date === currentDateString && d.Room_Type === roomType; });
                 if (dayData) {
-                    totalPrice += dayData.Cost;
+                    totalPrice += dayData.Cost; // 累加每日价格
                 }
             }
 
-            const unitPrice = (totalPrice / days).toFixed(1);
-            const totalPriceFormatted = totalPrice.toFixed(0);
+            const unitPrice = (totalPrice / days).toFixed(1); // 计算每晚价格
+            const totalPriceFormatted = totalPrice.toFixed(0); // 计算总价格
 
+            // 将房型及其价格信息推入价格总结数组
             priceSummary.push({
                 Room_Type: roomType,
                 Unit_Price: unitPrice,
@@ -154,3 +177,4 @@
         priceTable.appendChild(table);
     }
 });
+
