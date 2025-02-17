@@ -1244,7 +1244,7 @@ document.addEventListener('DOMContentLoaded', function () {
         }
 
         // 检查是否选择了不可入住日期
-        const blackoutDate = blackoutDates.find(item => item.Hotel_Name === hotelName && item.Date >= checkinDate && item.Date <= checkoutDate);
+        const blackoutDate = blackoutDates.find(item => item.Hotel_Name === hotelName && item.Date >= checkinDate && item.Date < checkoutDate);
         if (blackoutDate) {
             document.getElementById('error_message').textContent = `选择的日期与酒店的不可入住日期冲突，请选择其他日期。`;
             document.getElementById('error_message').style.display = "block";
