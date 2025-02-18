@@ -1238,11 +1238,13 @@ document.addEventListener('DOMContentLoaded', function () {
         }
 
         // 检查是否有备注信息
-        const remark = remarksData.find(item => item.Hotel_Name === hotelName);
-        if (remark) {
-            remarkMessage.innerHTML = `<strong>备注:</strong> ${remark.Remark}`;
-        }
-
+      // 检查是否有备注信息
+    const hotelRemarks = remarksData.filter(item => item.Hotel_Name === hotelName);
+    if (hotelRemarks.length > 0) {
+        // 显示所有备注信息
+        const remarksList = hotelRemarks.map(item => `<li><strong>备注:</strong> ${item.Remark}</li>`).join('');
+        remarkMessage.innerHTML = `<ul>${remarksList}</ul>`;
+    }
         // 检查是否选择了不可入住日期
         const blackoutDate = blackoutDates.find(item => item.Hotel_Name === hotelName && item.Date >= checkinDate && item.Date < checkoutDate);
         if (blackoutDate) {
