@@ -268,15 +268,15 @@ document.addEventListener('DOMContentLoaded', function () {
           "Date": "2025-05-22"
         },
         {
-          "Hotel_Name": "温德姆俱乐部桑丹斯度假村御宿",
+          "Hotel_Name": "温德姆度假会御宿日之舞度假酒店",
           "Date": "2025-02-18"
         },
         {
-          "Hotel_Name": "温德姆俱乐部桑丹斯度假村御宿",
+          "Hotel_Name": "温德姆度假会御宿日之舞度假酒店",
           "Date": "2025-02-19"
         },
         {
-          "Hotel_Name": "温德姆俱乐部桑丹斯度假村御宿",
+          "Hotel_Name": "温德姆度假会御宿日之舞度假酒店",
           "Date": "2025-02-20"
         },
         {
@@ -352,15 +352,15 @@ document.addEventListener('DOMContentLoaded', function () {
           "Date": "2025-05-15"
         },
         {
-          "Hotel_Name": "温德姆俱乐部桑丹斯度假村安房鸭川",
+          "Hotel_Name": "温德姆度假会安房鸭川日之舞度假酒店",
           "Date": "2025-03-11"
         },
         {
-          "Hotel_Name": "温德姆俱乐部桑丹斯度假村安房鸭川",
+          "Hotel_Name": "温德姆度假会安房鸭川日之舞度假酒店",
           "Date": "2025-03-12"
         },
         {
-          "Hotel_Name": "温德姆俱乐部桑丹斯度假村安房鸭川",
+          "Hotel_Name": "温德姆度假会安房鸭川日之舞度假酒店",
           "Date": "2025-03-13"
         },
         {
