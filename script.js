@@ -3,28 +3,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const locationSelect = document.getElementById('location');
     const hotelSelect = document.getElementById('hotel_name');
     const remarkMessage = document.getElementById('remark_message');  // 用于显示备注信息
-// 获取当前日期并设置默认值
-  const today = new Date();
-  const checkInDate = formatDate(today);
-  const checkOutDate = formatDate(new Date(today.setDate(today.getDate() + 2)));
-  document.getElementById('check_in').value = checkInDate;
-  document.getElementById('check_out').value = checkOutDate;
-  // 监听入住日期的变化
-  document.getElementById('check_in').addEventListener('change', function (e) {
-    const checkInValue = e.target.value;
-    if (checkInValue) {
-      const checkInDate = new Date(checkInValue);
-      const checkOutDate = new Date(checkInDate.setDate(checkInDate.getDate() + 2));
-      document.getElementById('check_out').value = formatDate(checkOutDate);
-    }
-  });
-  // 格式化日期为 YYYY-MM-DD
-  function formatDate(date) {
-    const year = date.getFullYear();
-    const month = String(date.getMonth() + 1).padStart(2, '0');
-    const day = String(date.getDate()).padStart(2, '0');
-    return `${year}-${month}-${day}`;
-  }
+
     // 获取备注数据
     const remarksData = [
         {
